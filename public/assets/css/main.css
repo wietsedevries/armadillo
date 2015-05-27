@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+@font-face {
+    font-family: montague;
+    src: url(fonts/montague.ttf);
+}
+body {
+  margin:0;
+}
+section {
+  width:100vw;
+  height:100vh;
+  overflow: hidden;
+}
+h1 {
+  color: transparent;
+}
+#host {
+  background: url('images/background.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-width: 550px;
+}
+.container {
+  width:500px;
+  margin:60px auto;
+  height: 100vh;
+  background: url('images/wood.png') no-repeat;
+  background-size: 100%;
+  padding-top: 30px;
+}
+.logo {
+  width:400px;
+  margin:0 auto;
+  height:80px;
+  background: url('images/logo.png') no-repeat;
+}
+/* #menu */
+nav {
+  width: 400px;
+  margin:0 auto;
+  padding-right: 32px;
+  text-align: center;
+}
+ul {
+  list-style: none;
+  padding:0;
+}
+li > a, #play  {
+  color:#603716;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-family: montague;
+}
+.bulletHole {
+  display: inline-block;
+  opacity:0;
+  transition:0.1s;
+  width:27px;
+  height:27px;
+  margin-right:5px;
+  background: url('images/bullethole.png') no-repeat;
+}
+li > a:hover .bulletHole {
+  opacity:1;
+}
+/* #connect */
+.instructions {
+  font-family: montague;
+  font-size: 1.2rem;
+  text-align: center;
+  color:#603716;
+}
+.website {
+  width:100%;
+  font-size:2rem;
+}
+#code {
+  width:100%;
+  font-size:3rem;
+}
