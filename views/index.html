@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <meta charset="utf-8"/>
+      <meta charset="UTF-8" />
       <title>Armadillo.js</title>
-      <meta name="description" content="An inter-device HTML game framework. Use your mobile device as a controller for any HTML game."
-      <meta name="viewport" user-scalable=no width=device-width content="initial-scale=1, maximum-scale=1" />
+      <meta name="description" content="An inter-device HTML game framework. Use your mobile device as a controller for any HTML game.">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
       <link rel="stylesheet" href="assets/css/main.css" type='text/css'/>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
       <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
       <script src="assets/js/main.js"></script>
+      <script>
+    var offset;
+  </script>
   </head>
   <body>
       <!-- This section is visible on the hosting device (desktop/laptop) -->
@@ -33,7 +36,7 @@
                     Grab your phone and go to
                     <div class="website">dillo.cc</div>
                     now enter the following code
-                    <div id="code"></div>
+                    <div id="code">This code will be generated automatically</div>
                   </div>
               </div>
 
@@ -45,20 +48,24 @@
       </section>
 
       <!-- This section contains the canvas and is visible when the game starts -->
-      <section id="game"  style="display:none">hello
+      <section id="game"  style="display:none">
       </section>
 
       <!-- This section is visible on the mobile device -->
       <section id="player" style="display:none">
+        <div class="rotateDevice">
+          <div class="rotate"></div>
+        </div>
           <div id="connect">
-            <input type="number" placeholder="code" id="input"/>
-            <button id="join"> Join </button>
+            <input type="number" placeholder="Enter code" id="input"/>
+            <div id="join"></div>
           </div>
           <div id="controller" style="display:none">
-            <div>
+
+            <div class="joystickPad">
               <div id="joystick"></div>
             </div>
-            <div id="button1">connected</div>
+            <div id="button1"></div>
             <div id="button2"></div>
           </div>
       </section>
@@ -73,8 +80,14 @@
       <!-- load framework js file -->
       <script src="assets/js/armadillo.js"></script>
 
+      <!-- load joystick file -->
+      <script src="assets/js/joystick.js"></script>
+
       <!-- load controller js file -->
       <script src="assets/js/controller.js"></script>
 
+      <!-- load Demo game -->
+      <script src="demo/phaser.min.js"></script>
+      <script src="demo/demo.js"></script>
   </body>
 </html>

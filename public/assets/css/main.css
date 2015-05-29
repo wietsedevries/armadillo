@@ -7,10 +7,11 @@
 }
 body {
   margin:0;
+  background:#000;
 }
 section {
-  width:100vw;
-  height:100vh;
+  width:100%;
+  height:100%;
   overflow: hidden;
 }
 h1 {
@@ -52,7 +53,7 @@ ul {
 li > a, #play  {
   color:#603716;
   text-decoration: none;
-  font-size: 1.8rem;
+  font-size: 2.5rem;
   font-family: montague;
 }
 .bulletHole {
@@ -68,6 +69,14 @@ li > a:hover .bulletHole {
   opacity:1;
 }
 /* #connect */
+#connect {
+  width:380px;
+  position: absolute;
+  top:50%;
+  left:50%;
+  margin-top:-35px;
+  margin-left:-190px;
+}
 .instructions {
   font-family: montague;
   font-size: 1.2rem;
@@ -81,4 +90,136 @@ li > a:hover .bulletHole {
 #code {
   width:100%;
   font-size:3rem;
+}
+/* Controller */
+#player {
+
+  background: url('images/mobileBackground.png') no-repeat;
+  background-size: 100% 100%;
+  width:100vw;
+  height:100vh;
+}
+@media screen and (orientation: portrait) {
+    .rotateDevice{
+        position: fixed;
+        z-index: 999;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background: url('images/mobileBackground.png') no-repeat;
+        background-size: 100% 100%;
+    }
+}
+@media screen and (orientation: landscape) {
+    .rotateDevice{
+      display: none;
+    }
+}
+.rotate {
+  width:250px;
+  height:250px;
+  position: absolute;
+  top:50%;
+  left:50%;
+  margin-left:-125px;
+  margin-top:-125px;
+  background:url('images/rotate.png');
+}
+.enterCode {
+  width:350px;
+  height:70px;
+  background: url('images/enterCode.png');
+  margin: 30px auto 10px;
+}
+input {
+  font-size: 2.5em;
+  text-align: center;
+  font-family: montague;
+  color:#7f4f1f;
+  width:100%;
+  background:none;
+  border:none;
+  outline:none;
+  margin-bottom: 10px;
+  float:left;
+  width:280px;
+  height:70px;
+}
+::-webkit-input-placeholder {
+  font-family: montague;
+  color:#7f4f1f;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  font-family: montague;
+  color:#7f4f1f;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   font-family: montague;
+   color:#7f4f1f;
+}
+
+:-ms-input-placeholder {
+  font-family: montague;
+  color:#7f4f1f;
+}
+#join {
+  background:url('images/joinButton.png');
+  width:80px;
+  height:70px;
+  margin-left:20px;
+  float:left;
+
+}
+#controller {
+  height:200px;
+  width:84%;
+  position: absolute;
+  top:50%;
+  left:50%;
+  margin-left:-42%;
+  margin-top:-100px;
+}
+.joystickPad {
+  width:200px;
+  height:200px;
+  background:url('images/joystickPad.png');
+  float:left;
+}
+#joystick {
+  width:100px;
+  height:100px;
+  background:url('images/joystick.png');
+  position: absolute;
+  margin-left:50px;
+  margin-top:50px;
+}
+#button1 {
+  width:80px;
+  height:80px;
+  background:url('images/B-Button.png');
+  float:right;
+  margin-top:20px;
+}
+#button2 {
+  width:80px;
+  height:80px;
+  background:url('images/A-Button.png');
+  float:right;
+  margin-top:120px;
+}
+/* Canvas/Game */
+#game {
+  background:#b1701d;
+}
+canvas {
+  width:1280px;
+  height:720px;
+  position: absolute;
+  top:50%;
+  left:50%;
+  margin-top:-360px;
+  margin-left:-640px;
 }

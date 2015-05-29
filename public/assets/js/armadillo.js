@@ -7,7 +7,7 @@ function detectDevice() {
 		$('#player').show();
 
   }else{
-		$('#host').show();
+		$('#game').show();
   }
 }
 
@@ -75,8 +75,8 @@ jQuery(function($){
         },
 				//Button functions
 				controller: function (x,y) {
-					App.$doc.on('touchstart', x, function(){ App.Player.buttonA(y); });
-					App.$doc.on('touchend', x, function(){ App.Player.buttonA(y); });
+					App.$doc.on('touchstart', x, function(){ App.Player.button(y); });
+					App.$doc.on('touchend', x, function(){ App.Player.button(y); });
 				},
 
         //Create some click handlers for the various buttons that appear on-screen.
@@ -91,7 +91,6 @@ jQuery(function($){
 						//Phonetroller (3 buttons, add more by adding more 'controller' functions)
 						App.controller('#button1',1);
 						App.controller('#button2',2);
-						App.controller('#button3',3);
 
         },
 
@@ -132,10 +131,7 @@ jQuery(function($){
 											button2();
 							        break;
 							    case 3:
-											button3();
-							        break;
-							    case 4:
-											button4(data.angle);
+                      button3(data.angle);
 							        break;
 							}
 						},
@@ -146,7 +142,7 @@ jQuery(function($){
                 // show canvas and start game
                 $('#host').hide();
                 $('#game').show();
-								// play();
+								start();
 
             }
 
@@ -186,7 +182,6 @@ jQuery(function($){
 
 						//Run function when controller buttons are clicked
 						button: function(x,y) {
-
 							//redefine data to include which button was pressed
 							var data = {
                   gameId : App.gameId,
