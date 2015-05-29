@@ -7,10 +7,17 @@ function detectDevice() {
 		$('#player').show();
 
   }else{
-		$('#game').show();
+    $('#host').show();
   }
 }
-
+function endGame(score) {
+    $('#game').hide();
+    $('#getCode').hide();
+    $('#menu').hide();
+    $('#host').show();
+    $('#score').show();
+    $('#newScore').html(score+" Points");
+}
 var App;
 
 jQuery(function($){
@@ -73,6 +80,14 @@ jQuery(function($){
             // Initialize the fastclick library
             FastClick.attach(document.body);
         },
+
+        // Restart game
+        restart: function () {
+          restartGame();
+          $('#host').hide();
+          $('#game').show();
+
+        },
 				//Button functions
 				controller: function (x,y) {
 					App.$doc.on('touchstart', x, function(){ App.Player.button(y); });
@@ -84,6 +99,7 @@ jQuery(function($){
             App.$doc = $(document);
             // Desktop
             App.$doc.on('click', '#play', App.Host.createGame);
+            App.$doc.on('click', '#playAgain', App.restart);
 
             // Player
             App.$doc.on('click', '#join',App.Player.onJoin);
