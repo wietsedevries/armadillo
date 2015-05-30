@@ -7,8 +7,8 @@ var path = require('path');
 // Create a new instance of Express
 var app = express();
 
-// Import the game file.
-var armadillo = require('./armadillo');
+// Import the dillo module
+var armadillo = require('dillo');
 
 // Turn down the logging activity
 app.use(express.logger('dev'));
