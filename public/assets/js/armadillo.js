@@ -4,26 +4,18 @@ window.onload = function(){
 };
 function detectDevice() {
   if(  /Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent) ){
-		$('#player').show();
+    $('#player').show();
+    // offset = $( "#joystick" ).offset();
 
   }else{
     $('#host').show();
   }
 }
-function endGame(score) {
-    $('#game').hide();
-    $('#getCode').hide();
-    $('#menu').hide();
-    $('#host').show();
-    $('#score').show();
-    $('#newScore').html(score+" Points");
-}
 var App;
-
 jQuery(function($){
-    'use strict';
+   'use strict';
 
-    var IO = {
+   var IO = {
 
         // Connect client to server
         init: function() {
@@ -33,14 +25,14 @@ jQuery(function($){
 
         // Listen to events coming from the server
         bindEvents : function() {
-            IO.socket.on('connected', IO.onConnected );
+            IO.socket.on('connected', IO.Connected );
             IO.socket.on('gameCreated', IO.gameCreated );
             IO.socket.on('joined', IO.joined );
             IO.socket.on('clicked', IO.clicked );
         },
 
         // Clientside is connected
-        onConnected : function() {
+        Connected : function() {
             // set session id
             App.mySocketId = IO.socket.socket.sessionid;
         },
@@ -80,7 +72,16 @@ jQuery(function($){
             // Initialize the fastclick library
             FastClick.attach(document.body);
         },
+        // End game
+        endGame: function (score) {
+          $('#game').hide();
+          $('#getCode').hide();
+          $('#menu').hide();
+          $('#host').show();
+          $('#score').show();
+          $('#newScore').html(score+" Points");
 
+        },
         // Restart game
         restart: function () {
           restartGame();
@@ -90,7 +91,10 @@ jQuery(function($){
         },
 				//Button functions
 				controller: function (x,y) {
-					App.$doc.on('touchstart', x, function(){ App.Player.button(y); });
+
+					App.$doc.on('touchstart', x, function(){
+            App.Player.button(y);
+             });
 					App.$doc.on('touchend', x, function(){ App.Player.button(y); });
 				},
 
@@ -198,6 +202,8 @@ jQuery(function($){
 
 						//Run function when controller buttons are clicked
 						button: function(x,y) {
+              var n = new Date();
+              console.log("client at: "+ n.getTime());
 							//redefine data to include which button was pressed
 							var data = {
                   gameId : App.gameId,

@@ -168,38 +168,94 @@
   };
 
 })(jQuery);
+  var current;
+  function calculateHour(y,x) {
+    var angle,
+        hour,
+  			yAxis = y - offset.top,
+  			xAxis = x - offset.left;
+
+        if ((xAxis < -12 || yAxis < -12) || (xAxis > 12 || yAxis > 12) || (xAxis > 12 || yAxis < -12) || (xAxis < -12 || yAxis > 12)) {
+
+          cal =  Math.round(Math.atan(yAxis/xAxis)*180/Math.PI*10000)/10000;
+
+          if ( yAxis < 0 && xAxis < 0 ) {
+      			angle = cal - 180;
+      		}else if (yAxis > 1 && xAxis < 0) {
+      			angle = cal + 180;
+      		}else{
+            angle = cal;
+          }
+          if (angle < -60 && angle >= -90) {
+              hour = 1;
+          }else if (angle < -30 && angle >= -60) {
+              hour = 2;
+          }else if (angle < 0 && angle >= -30) {
+              hour = 3;
+          }else if (angle < 30 && angle >= 0) {
+              hour = 4;
+          }else if (angle < 60 && angle >= 30) {
+              hour = 5;
+          }else if (angle < 90 && angle >= 60) {
+              hour = 6;
+          }else if (angle < 120 && angle >= 90) {
+              hour = 7;
+          }else if (angle < 150 && angle >= 120) {
+              hour = 8;
+          }else if (angle < 180 && angle >= 150) {
+              hour = 9;
+          }else if (angle < -150 && angle >= -180) {
+              hour = 10;
+          }else if (angle < -120 && angle >= -150) {
+              hour = 11;
+          }else if (angle < -90 && angle >= -120) {
+              hour = 12;
+          }
+
+        }else{
+          hour = 0;
+        }
+        if (hour != current) {
+          App.Player.button(3,hour);
+          current = hour;
+        }
+
+  }
 
 
-
-	function calculateAngle(y,x) {
-		var angle,
-			yAxis = y - offset.top,
-			xAxis = x - offset.left;
-
-		cal =  Math.round(Math.atan(yAxis/xAxis)*180/Math.PI*10000)/10000;
-
-		if ( yAxis < -12 && xAxis < -12 ) {
-			angle = cal - 180;
-		}else if (yAxis > 12 && xAxis < -12) {
-			angle = cal + 180;
-		}else if (yAxis > 12 || yAxis < -12 || xAxis < -12 || xAxis >12) {
-      angle = cal;
-    }else{
-			angle = 0;
-		}
-    App.Player.button(3,angle);
-    console.log(angle);
-
-	}
+	// function calculateAngle(y,x) {
+	// 	var angles,
+	// 		yAxis = y - offset.top,
+	// 		xAxis = x - offset.left;
+  //
+	// 	cal =  Math.round(Math.atan(yAxis/xAxis)*180/Math.PI*10000)/10000;
+  //
+	// 	if ( yAxis < -12 && xAxis < -12 ) {
+	// 		angle = cal - 180;
+	// 	}else if (yAxis > 12 && xAxis < -12) {
+	// 		angle = cal + 180;
+	// 	}else if (yAxis > 12 || yAxis < -12 || xAxis < -12 || xAxis >12) {
+  //     angle = cal;
+  //   }else{
+	// 		angle = 0;
+	// 	}
+  //   App.Player.button(3,angle);
+  //
+	// }
 
 	  $(function() {
 
 	    $( "#joystick" ).draggable({
+        revert: function() {
+          App.Player.button(3,0);
+          return true;
+        },
 	    	drag: function() {
 	    		var rect = document.getElementById('joystick').getBoundingClientRect();
-				calculateAngle(rect.top,rect.left);
-			},
-	    	revert: true,
-	    	/* containment: "parent" */
+
+				  // calculateAngle(rect.top,rect.left);
+          calculateHour(rect.top,rect.left);
+			  },
+
 	    });
 	  });

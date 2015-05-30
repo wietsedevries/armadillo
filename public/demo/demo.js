@@ -26,7 +26,7 @@ function start(){
 
 function preload() {
 
-    game.stage.backgroundColor = '#85b5e1';
+    game.stage.backgroundColor = '#000';
 
     game.load.baseURL = '/demo/';
     game.load.crossOrigin = 'anonymous';
@@ -59,7 +59,7 @@ function create() {
 
 
 
-    armadillo = game.add.sprite(100, 200, 'armadillo');
+    armadillo = game.add.sprite(100, 560, 'armadillo');
     armadillo.anchor.setTo(0.5, 0.5);
     armadillo.animations.add('walk',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]);
     armadillo.animations.add('jump',[20,21,22]);
@@ -69,8 +69,8 @@ function create() {
     armadillo.angle = 0;
 
     tw1 = game.add.sprite(1500, 610, 'tumbleweed');
-    tw2 = game.add.sprite(2700, 600, 'tumbleweed');
-    tw3 = game.add.sprite(2100, 590, 'tumbleweed');
+    tw2 = game.add.sprite(3700, 600, 'tumbleweed');
+    tw3 = game.add.sprite(5100, 590, 'tumbleweed');
     tw1.anchor.setTo(0.5, 0.5);
     tw2.anchor.setTo(0.5, 0.5);
     tw3.anchor.setTo(0.5, 0.5);
@@ -99,12 +99,12 @@ function destroyTw1(){
   health = health - 1;
 }
 function destroyTw2(){
-  tw2.position.x =  1280 + (Math.random() * 1000);
+  tw2.position.x =  1580 + (Math.random() * 1000);
   tw2.position.y = 600;
   health = health - 1;
 }
 function destroyTw3(){
-  tw3.position.x =  1280 + (Math.random() * 1000);
+  tw3.position.x =  1780 + (Math.random() * 1000);
   tw3.position.y = 590;
   health = health - 1;
 }
@@ -167,7 +167,7 @@ function update () {
     }
     else if ((cursors.left.isDown || left) && airborn === true)
     {
-      armadillo.body.velocity.x = -150;
+      armadillo.body.velocity.x = -350;
     }
     else if ((cursors.right.isDown || right) && airborn === false)
     {
@@ -175,7 +175,7 @@ function update () {
     }
     else if ((cursors.right.isDown || right) && airborn === true)
     {
-      armadillo.body.velocity.x = 150;
+      armadillo.body.velocity.x = 350;
     }
 
     if ((jumpButton.isDown || jump) && (armadillo.body.onFloor() || armadillo.body.touching.down))
@@ -203,13 +203,15 @@ function update () {
     if(health === 0 ){
       heart1.kill();
       gameOver = true;
+      left = false;
+      right = false;
+      jump = false;
+      health = 3;
       armadillo.kill();
       setTimeout(function(){
 
-        left = false;
-        right = false;
-        health = 3;
-        endGame(updatedScore);
+
+        App.endGame(updatedScore);
       },1200);
     }
 }
