@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "express": "~4.9.0",
-    "socket.io":"latest"
+    "socket.io":"latest",
+    "dillo":"latest"
   }
 }
