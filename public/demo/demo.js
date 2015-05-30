@@ -124,15 +124,50 @@ function restartGame(){
 }
 function update () {
 
-    updateText();
+
     game.physics.arcade.overlap(armadillo,tw1,destroyTw1);
     game.physics.arcade.overlap(armadillo,tw2,destroyTw2);
     game.physics.arcade.overlap(armadillo,tw3,destroyTw3);
 
     game.physics.arcade.collide(armadillo, ground);
-
-
+    if ((jumpButton.isDown || jump) && (armadillo.body.onFloor() || armadillo.body.touching.down))
+    {
+      armadillo.body.velocity.y = -450;
+      armadillo.animations.play('walk', 0, false);
+      armadillo.animations.play('jump', 20, false);
+      airborn = true;
+      setTimeout(function(){
+        armadillo.animations.play('land', 20, false);
+        airborn = false;
+        armadillo.animations.play('walk', 40, true);
+      }, 1850);
+    }
+    if(tiny) {
+      armadillo.scale.set(0.3 , 0.3);
+      tiny = false;
+      setTimeout(function(){
+        armadillo.scale.set(1,1);
+      },3000);
+    }
     armadillo.body.velocity.x = 0;
+    if ((cursors.left.isDown || left) && airborn === false)
+    {
+      armadillo.body.velocity.x = -250;
+
+    }
+    else if ((cursors.left.isDown || left) && airborn === true)
+    {
+      armadillo.body.velocity.x = -350;
+    }
+    else if ((cursors.right.isDown || right) && airborn === false)
+    {
+      armadillo.body.velocity.x = 250;
+    }
+    else if ((cursors.right.isDown || right) && airborn === true)
+    {
+      armadillo.body.velocity.x = 350;
+    }
+
 
     if(tw1.position.x < -100) {
       tw1.position.x =  1280 + (Math.random() * 1000);
@@ -160,40 +195,7 @@ function update () {
     bg.position.x = bg.position.x -2;
     bg2.position.x = bg2.position.x -2;
 
-    if ((cursors.left.isDown || left) && airborn === false)
-    {
-      armadillo.body.velocity.x = -250;
 
-    }
-    else if ((cursors.left.isDown || left) && airborn === true)
-    {
-      armadillo.body.velocity.x = -350;
-    }
-    else if ((cursors.right.isDown || right) && airborn === false)
-    {
-      armadillo.body.velocity.x = 250;
-    }
-    else if ((cursors.right.isDown || right) && airborn === true)
-    {
-      armadillo.body.velocity.x = 350;
-    }
-
-    if ((jumpButton.isDown || jump) && (armadillo.body.onFloor() || armadillo.body.touching.down))
-    {
-      armadillo.body.velocity.y = -450;
-      armadillo.animations.play('walk', 0, false);
-      armadillo.animations.play('jump', 20, false);
-      airborn = true;
-      setTimeout(function(){
-        armadillo.animations.play('land', 20, false);
-        airborn = false;
-        armadillo.animations.play('walk', 40, true);
-      }, 1850);
-    }
-    if(flip && airborn){
-      armadillo.angle = (armadillo.angle + 360);
-      console.log(armadillo.angle);
-    }
     if(health === 2){
       heart3.kill();
     }
@@ -214,6 +216,7 @@ function update () {
         App.endGame(updatedScore);
       },1200);
     }
+    updateText();
 }
 function render () {
 

@@ -2,12 +2,12 @@ var angle,
     jump,
     left,
     right,
-    flip;
+    tiny;
 
 // 'B' Button //
 function button1() {
 
-  flip = true;
+   tiny = true;
 
 }
 // 'A' Button //
