@@ -17,7 +17,6 @@ function button2() {
   }else{
     jump = true;
   }
-  console.log(jump);
 }
 // Joystick  for angle//
 // function button3(angle) {
@@ -55,5 +54,4 @@ function button3(hour) {
           break;
 
       }
-      // console.log(hour+": right ="+right+" and left= "+ left);
 }
