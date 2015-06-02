@@ -256,6 +256,8 @@
 				  // calculateAngle(rect.top,rect.left);
           calculateHour(rect.top,rect.left);
 			  },
+        containment: "parent",
+        axis: "x"
 
 	    });
 	  });

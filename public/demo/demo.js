@@ -99,12 +99,12 @@ function destroyTw1(){
   health = health - 1;
 }
 function destroyTw2(){
-  tw2.position.x =  1580 + (Math.random() * 1000);
+  tw2.position.x =  1780 + (Math.random() * 1000);
   tw2.position.y = 600;
   health = health - 1;
 }
 function destroyTw3(){
-  tw3.position.x =  1780 + (Math.random() * 1000);
+  tw3.position.x =  2280 + (Math.random() * 1000);
   tw3.position.y = 590;
   health = health - 1;
 }
@@ -112,6 +112,8 @@ function updateText() {
       if(gameOver === false){
         updatedScore++;
         score.setText(updatedScore+" Points");
+      }else{
+        score.setText("Game over");
       }
 }
 function restartGame(){
