@@ -40,10 +40,7 @@ function joystick(hour) {
           break;
 
       }
-      var n = new Date();
-      buttTime = (n.getTime() - buttTime);
-      console.log("joystick: " + buttTime+" ms");
-      buttTime = 0;
+
 }
 
 
@@ -58,6 +55,10 @@ function button1() {
 function button2() {
   if (jump === true) {
     jump = false;
+    var n = new Date();
+    buttTime = (n.getTime() - buttTime);
+    console.log("button 1 & 2: " + buttTime+" ms");
+    buttTime = 0;
   }else{
     jump = true;
   }
