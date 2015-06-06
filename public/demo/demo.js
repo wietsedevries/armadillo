@@ -145,7 +145,7 @@ function update () {
       }, 1850);
     }
     if(tiny) {
-      armadillo.scale.set(0.3 , 0.3);
+      armadillo.scale.set(0.7 , 0.7);
       tiny = false;
       setTimeout(function(){
         armadillo.scale.set(1,1);
@@ -199,13 +199,13 @@ function update () {
 
 
     if(health === 2){
-      heart3.kill();
+      heart1.kill();
     }
     if(health === 1){
       heart2.kill();
     }
     if(health === 0 ){
-      heart1.kill();
+      heart3.kill();
       gameOver = true;
       left = false;
       right = false;

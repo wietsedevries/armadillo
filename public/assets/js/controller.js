@@ -4,22 +4,8 @@ var angle,
     right,
     tiny;
 
-// 'B' Button //
-function button1() {
-
-   tiny = true;
-
-}
-// 'A' Button //
-function button2() {
-  if (jump === true) {
-    jump = false;
-  }else{
-    jump = true;
-  }
-}
 // Joystick  for angle//
-// function button3(angle) {
+// function joystick(angle) {
 //
 //       if(angle !== 0 && (angle > -90 && angle < 90)) {
 //         right = true;
@@ -34,7 +20,7 @@ function button2() {
 // }
 
 // joystick for hour
-function button3(hour) {
+function joystick(hour) {
       switch (hour) {
         case 0:
           right = false;
@@ -54,4 +40,25 @@ function button3(hour) {
           break;
 
       }
+      var n = new Date();
+      buttTime = (n.getTime() - buttTime);
+      console.log("joystick: " + buttTime+" ms");
+      buttTime = 0;
+}
+
+
+// 'B' Button //
+function button1() {
+
+   tiny = true;
+
+
+}
+// 'A' Button //
+function button2() {
+  if (jump === true) {
+    jump = false;
+  }else{
+    jump = true;
+  }
 }

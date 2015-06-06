@@ -216,7 +216,7 @@
           hour = 0;
         }
         if (hour != current) {
-          App.Player.button(3,hour);
+          App.Player.button(0,hour);
           current = hour;
         }
 
@@ -247,7 +247,7 @@
 
 	    $( "#joystick" ).draggable({
         revert: function() {
-          App.Player.button(3,0);
+          App.Player.button(0,0);
           return true;
         },
 	    	drag: function() {
@@ -256,6 +256,7 @@
 				  // calculateAngle(rect.top,rect.left);
           calculateHour(rect.top,rect.left);
 			  },
+        // Lock joystick on axis (x or y)
         axis: "x"
 
 	    });

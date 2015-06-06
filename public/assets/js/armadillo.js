@@ -5,13 +5,13 @@ window.onload = function(){
 function detectDevice() {
   if(  /Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent) ){
     $('#player').show();
-    // offset = $( "#joystick" ).offset();
-
   }else{
     $('#host').show();
   }
 }
 var App;
+var buttTime = 0;
+
 jQuery(function($){
    'use strict';
 
@@ -42,13 +42,13 @@ jQuery(function($){
             App.Host.startGame(data);
         },
 
-        //A player has successfully joined the game.
+        // A player has successfully joined the game.
         joined : function(data) {
             // Update screens for both player and host
-            App[App.myRole].changeLayout(data);
+            App[App.role].changeLayout(data);
         },
 
-        //click on button
+        // Click on button
         clicked: function (data) {
           App.Host.clickButton(data);
         }
@@ -56,16 +56,16 @@ jQuery(function($){
 
     App = {
 
-        //game id
+        // gameId number
         gameId: 0,
 
-        //This is used to differentiate between 'Host' and 'Player' browsers.
-        myRole: '',
+        // This is used to differentiate between 'Host' and 'Player' browsers.
+        role: '',
 
-        //socket id
+        // Socket ID
         mySocketId: '',
 
-        //This runs when the page initially loads.
+        // This runs when the page initially loads.
         init: function () {
             App.bindEvents();
 
@@ -89,14 +89,13 @@ jQuery(function($){
           $('#game').show();
 
         },
-				//Button functions
+				// Button functions
 				controller: function (x,y) {
-          event.preventDefault();
 					App.$doc.on('touchstart', x, function(){App.Player.button(y); });
 					App.$doc.on('touchend', x, function(){ App.Player.button(y); });
 				},
 
-        //Create some click handlers for the various buttons that appear on-screen.
+        // Create some event handlers
         bindEvents: function () {
             App.$doc = $(document);
             // Desktop
@@ -106,9 +105,10 @@ jQuery(function($){
             // Player
             App.$doc.on('click', '#join',App.Player.onJoin);
 
-						//Phonetroller (3 buttons, add more by adding more 'controller' functions)
+						// Phonetroller (3 buttons, add more by adding more 'controller' functions)
 						App.controller('#button1',1);
 						App.controller('#button2',2);
+            // App.controller('#button3',3);
 
         },
 
@@ -117,13 +117,12 @@ jQuery(function($){
             //Handler for the "Start" button on the introScreen.
             createGame: function () {
                 IO.socket.emit('createNewGame');
-                console.log('yup');
             },
             //The Host screen is displayed for the first time.
             startGame: function (data) {
                 App.gameId = data.gameId;
                 App.mySocketId = data.mySocketId;
-                App.myRole = 'Host';
+                App.role = 'Host';
 								//show code
                 App.Host.showCode();
             },
@@ -142,15 +141,16 @@ jQuery(function($){
 						clickButton: function (data) {
 
 							switch (data.button) {
+                  case 0:
+                      joystick(data.angle);
+                      break;
 							    case 1:
 											button1();
 							        break;
 							    case 2:
 											button2();
 							        break;
-							    case 3:
-                      button3(data.angle);
-							        break;
+
 							}
 						},
 
@@ -177,22 +177,22 @@ jQuery(function($){
                 var data = {
                     gameId : $('#input').val(),
                 };
-                // Send the gameId and playerName to the server
+                // Send the gameId to the server
                 IO.socket.emit('JoinGame', data);
 
                 // Set data for the current player.
-                App.myRole = 'Player';
+                App.role = 'Player';
             },
 
-            //Display the waiting screen for player
+            //Change show controller for player
             changeLayout : function(data) {
                 if(IO.socket.socket.sessionid === data.mySocketId){
-                    App.myRole = 'Player';
+                    App.role = 'Player';
                     App.gameId = data.gameId;
 
                     $('#connect').hide();
                     $('#controller').show();
-										//set offset for joystick
+										//set offset for joystick (needed to calculate angle of joystick)
 										offset = $( "#joystick" ).offset();
 
                 }
@@ -200,8 +200,7 @@ jQuery(function($){
 
 						//Run function when controller buttons are clicked
 						button: function(x,y) {
-              var n = new Date();
-              console.log("client at: "+ n.getTime());
+
 							//redefine data to include which button was pressed
 							var data = {
                   gameId : App.gameId,
@@ -210,6 +209,9 @@ jQuery(function($){
               };
 							//Send data to server
 							IO.socket.emit('pressButton', data);
+
+              var n = new Date();
+              buttTime = n.getTime();
             },
 
 
