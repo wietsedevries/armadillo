@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "express": "~4.9.0",
-    "socket.io":"latest",
+    "express": "latest",
+    "socket.io":"0.9",
     "dillo":"latest"
   }
 }
