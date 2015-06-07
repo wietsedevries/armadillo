@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use(express.static(path.join(__dirname,'views')));
 
 // Create server on port 3000
-var server = require('http').createServer(app).listen(3000);
+var server = require('http').createServer(app).listen(80);
 
 // Create a Socket.IO server and attach it to the http server
 var io = require('socket.io').listen(server);
