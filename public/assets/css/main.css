@@ -1,9 +1,9 @@
-* {
-  box-sizing: border-box;
-}
 @font-face {
     font-family: montague;
-    src: url(fonts/montague.ttf);
+    src: url(fonts/Montague.ttf);
+}
+* {
+  box-sizing: border-box;
 }
 body {
   margin:0;
@@ -17,6 +17,9 @@ section {
 h1 {
   color: transparent;
 }
+a {
+  text-decoration: none;
+}
 #host {
   background: url('images/background.png') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -29,15 +32,14 @@ h1 {
   width:500px;
   margin:60px auto 0;
   height: 430px;
-  background: url('images/wood.png') no-repeat;
-  background-size: 100%;
+  background: url('images/imageSprite.png') 505px 0px;
   padding-top: 30px;
 }
 .logo {
-  width:400px;
-  margin:0 auto;
-  height:120px;
-  background: url('images/logo.png') no-repeat;
+  width: 400px;
+  margin: 0 auto;
+  height: 115px;
+  background: url('images/imageSprite.png') -90px 0px;
 }
 /* #menu */
 nav {
@@ -63,7 +65,7 @@ li > a, #play  {
   width:27px;
   height:27px;
   margin-right:5px;
-  background: url('images/bullethole.png') no-repeat;
+  background: url('images/imageSprite.png') 0px 0px;
 }
 li > a:hover .bulletHole {
   opacity:1;
@@ -98,7 +100,7 @@ li > a:hover .bulletHole {
   width:280px;
   height:80px;
   margin:20px auto;
-  background:url('images/playAgain.png');
+  background: url('images/imageSprite.png') -92px -115px;
   cursor: pointer;
 }
 .gameOver {
@@ -150,13 +152,7 @@ li > a:hover .bulletHole {
   left:50%;
   margin-left:-125px;
   margin-top:-125px;
-  background:url('images/rotate.png');
-}
-.enterCode {
-  width:350px;
-  height:70px;
-  background: url('images/enterCode.png');
-  margin: 30px auto 10px;
+  background: url('images/imageSprite.png') -200px 247px;
 }
 input {
   font-size: 2.5em;
@@ -192,7 +188,7 @@ input {
   color:#7f4f1f;
 }
 #join {
-  background:url('images/joinButton.png');
+  background: url('images/imageSprite.png') 0px -27px;
   width:80px;
   height:70px;
   margin-left:20px;
@@ -211,13 +207,13 @@ input {
 .joystickPad {
   width:200px;
   height:200px;
-  background:url('images/joystickPad.png');
+  background: url('images/imageSprite.png') 0px -258px;
   float:left;
 }
 #joystick {
   width:100px;
   height:100px;
-  background:url('images/joystick.png');
+  background: url('images/imageSprite.png') -392px -118px;
   position: absolute;
   margin-left:50px;
   margin-top:50px;
@@ -225,14 +221,14 @@ input {
 #button1 {
   width:80px;
   height:80px;
-  background:url('images/B-Button.png');
+  background: url('images/imageSprite.png') 0px -97px;
   float:right;
   margin-top:20px;
 }
 #button2 {
   width:80px;
   height:80px;
-  background:url('images/A-Button.png');
+  background: url('images/imageSprite.png') 0px -179px;
   float:right;
   margin-top:120px;
 }

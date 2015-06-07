@@ -15,19 +15,16 @@
       <meta property="og:image" content="http://dillo.cc/assets/css/images/armadillo-framework.png" />
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
       <link rel="stylesheet" href="assets/css/main.min.css" type='text/css'/>
-
       <script src="assets/js/jquery-1.11.3.min.js"></script>
       <script src="assets/js/jquery-ui.min.js"></script>
-      <script>
-        var offset;
-      </script>
   </head>
   <body>
       <!-- This section is visible on the hosting device (desktop/laptop) -->
       <section id="host" style="display:none">
           <div class="container">
-
-              <h1 class="logo">Armadillo.js | An inter-device HTML game framework</h1>
+              <a href="/">
+                <h1 class="logo">Armadillo.js | An inter-device HTML game framework</h1>
+              </a>
 
               <div id="menu">
                   <nav>
@@ -51,7 +48,7 @@
               </div>
 
               <!-- This div will show the player's score -->
-              <div id="score"  style="display:none">
+              <div id="score" style="display:none">
                 <div class="gameOver">Game Over <br/>
                   <span id="newScore"></span>
                 </div>
@@ -92,17 +89,17 @@
       <script src="/socket.io/socket.io.js"></script>
 
       <!-- load framework js file -->
-      <script src="assets/js/armadillo.js"></script>
+      <script src="assets/js/armadillo.min.js"></script>
 
       <!-- load joystick file -->
-      <script src="assets/js/joystick.js"></script>
+      <script src="assets/js/joystick.min.js"></script>
 
       <!-- load controller js file -->
-      <script src="assets/js/controller.js"></script>
+      <script src="assets/js/controller.min.js"></script>
 
       <!-- load Demo game -->
       <script src="demo/phaser.min.js"></script>
-      <script src="demo/demo.js"></script>
+      <script src="demo/demo.min.js"></script>
 
   </body>
 </html>
