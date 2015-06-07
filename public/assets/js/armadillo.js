@@ -167,7 +167,7 @@ jQuery( function($) {
 
 			button: function(x,y) {
 				var data = {
-          gameId : App.gameId,
+          activeRoom : App.activeRoom,
 					button : x,
 					angle : y
         };
