@@ -9,14 +9,14 @@ Fork this repository and see what you can do with it!
 
 ##  Installation
 ###### 1. Install node.js ([nodejs.org](http://nodejs.org))
-###### 2. Open terminal and run the following commands:
-```sh
-$ mkdir Armadillo
-$ cd Armadillo
-```
-###### 3. Now clone repository:
+
+###### 2. Clone repository:
 ```sh
 $ git clone https://github.com/wietsedevries/armadillo.git
+```
+###### 3. Open folder
+```sh
+$ cd Armadillo
 ```
 ###### 4. Install dependencies:
 ```sh
