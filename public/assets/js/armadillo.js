@@ -77,8 +77,8 @@ jQuery( function($) {
 
     },
 
-		controller: function(x,y) {
-			App.$doc.on('touchstart', x, function() { App.Player.button(y); });
+    controller: function(x,y) {
+	    App.$doc.on('touchstart', x, function() { App.Player.button(y); });
 			App.$doc.on('touchend', x, function() { App.Player.button(y); });
 		},
 

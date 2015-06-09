@@ -1,11 +1,14 @@
 {
   "name": "Armadillo.js",
-  "description" : "An inter-device HTML game framework.",
+  "description": "An inter-device HTML game framework.",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
     "express": "latest",
-    "socket.io":"0.9",
-    "dillo":"latest"
+    "socket.io": "0.9",
+    "dillo": "latest"
+  },
+  "devDependencies": {
+    "qunitjs": "^1.18.0"
   }
 }
