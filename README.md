@@ -30,11 +30,11 @@ $ node server.js
 <br/>
 ## Documentation
 #####Controller buttons
-The controller currently has 2 buttons, but can have as many as you need. To add a new button you need to add 2 new lines of code in the **armadillo.js** file;
+The controller currently has 2 buttons, but can have as many as you need. To add a new button you need to add 2 new lines of code in the **armadillo.js** file.
 1.  Set eventlistener for button (@line 100)<br/><br/>
-<br/>`App.controller('#UNIQUE_BUTTON_ID',UNIQUE_INT_IDENTIFIER);`
-2.  Add function to button using the cases var (@line 130)<br/><br/>
-<br/> `UNIQUE_INT_IDENTIFIER: functionName`<br/>
+`App.controller('#UNIQUE_BUTTON_ID',UNIQUE_INT_IDENTIFIER);`<br/>
+2.  Add function to button using the cases var (@line 130)<br/>
+ `UNIQUE_INT_IDENTIFIER: functionName`<br/>
 
 Now you can use the 'functionName' function in the **controller.js** to do whatever you like. As is, the function wil execute twice; ontouch & onTouchEnd.<br/>
 The ** armadillo.js** file contains comments that will hopefully help you better understand these steps.
