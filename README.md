@@ -32,7 +32,7 @@ $ node server.js
 #####Controller buttons
 The controller currently has 2 buttons, but can have as many as you need. To add a new button you need to add 2 new lines of code in the **armadillo.js** file.<br/>
 1.  Set eventlistener for button (@line 100)<br/>
-`App.controller('#UNIQUE_BUTTON_ID',UNIQUE_INT_IDENTIFIER);`<br/>
+`App.controller('#UNIQUE_BUTTON_ID',UNIQUE_INT_IDENTIFIER);`<br/><br/>
 2.  Add function to button using the cases var (@line 130)<br/>
  `UNIQUE_INT_IDENTIFIER: functionName`<br/>
 
