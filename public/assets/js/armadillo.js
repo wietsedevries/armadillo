@@ -32,6 +32,7 @@ jQuery( function($) {
 
     Connected : function() {
         App.socketId = IO.socket.socket.sessionid;
+        App.socketId = IO.socket.io.engine.id;
     },
 
     gameCreated : function(data) {
@@ -131,6 +132,7 @@ jQuery( function($) {
         if (cases[data.button]) {
             cases[data.button](data.angle);
         }
+        console.log("yup: "+data.button);
 			},
 
       changeLayout: function(data) {
@@ -155,6 +157,7 @@ jQuery( function($) {
 
       changeLayout : function(data) {
         if(IO.socket.socket.sessionid === data.socketId){
+        if(IO.socket.io.engine.id === data.socketId){
           App.role = 'Player';
           App.activeRoom = data.activeRoom;
 
