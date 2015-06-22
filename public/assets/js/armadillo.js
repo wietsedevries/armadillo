@@ -131,7 +131,6 @@ jQuery( function($) {
         if (cases[data.button]) {
             cases[data.button](data.angle);
         }
-        console.log("yup: "+data.button);
 			},
 
       changeLayout: function(data) {
