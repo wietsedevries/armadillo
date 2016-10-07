@@ -131,13 +131,13 @@ jQuery( function($) {
         if (cases[data.button]) {
             cases[data.button](data.angle);
         }
-        
+
 			},
 
       changeLayout: function(data) {
         $('#host').hide();
         $('#game').show();
-				start();
+		start();
       }
 
     },
@@ -161,9 +161,9 @@ jQuery( function($) {
 
           $('#connect').hide();
           $('#controller').show();
-					offset = $('#joystick').offset();
-
+		  offset = $('#joystick').offset();
         }
+
       },
 
 			button: function(x,y) {

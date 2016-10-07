@@ -17,11 +17,13 @@ var current;
 function calculateHour(y,x) {
   var angle;
   var hour;
+
   var yAxis = y - offset.top;
   var xAxis = x - offset.left;
 
   if ( (xAxis < -12 || yAxis < -12) || (xAxis > 12 || yAxis > 12) ||
-      (xAxis > 12 || yAxis < -12) || (xAxis < -12 || yAxis > 12)) {
+      (xAxis > 12 || yAxis < -12) || (xAxis < -12 || yAxis > 12) ||
+      (xAxis === 0 && yAxis === 0)) {
 
     cal =  Math.round(Math.atan(yAxis/xAxis)*180/Math.PI*10000)/10000;
 
@@ -65,6 +67,7 @@ function calculateHour(y,x) {
     App.Player.button(0,hour);
     current = hour;
   }
+
 }
 
 $(function() {
@@ -77,10 +80,7 @@ $(function() {
   	drag: function() {
   		var rect = document.getElementById('joystick').getBoundingClientRect();
       calculateHour(rect.top,rect.left);
-	  },
-
-    // Lock joystick on axis (optional)
-    axis: "x"
+	  }
 
   });
 });
