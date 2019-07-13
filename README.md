@@ -27,8 +27,10 @@ $ node server.js
 ```
 ###### 6. Go to http://localhost:3000 and play game!:)
 <br/>
+
 ## Documentation
-#####Controller buttons
+
+##### Controller buttons
 The controller currently has 2 buttons, but can have as many as you need. To add a new button you need to add 2 new lines of code in the **armadillo.js** file.<br/><br/>
 1.  Set eventlistener for button (@line 100)<br/>
 `App.controller('#UNIQUE_BUTTON_ID',UNIQUE_INT_IDENTIFIER);`<br/><br/>
@@ -39,7 +41,7 @@ Now you can use the 'functionName' function in the **controller.js** to do whate
 The ** armadillo.js** file contains comments that will hopefully help you better understand these steps.
 
 
-#####Joystick
+##### Joystick
 This repository contains 2 types joysticks in je **joystick.js** file; an efficient one and an accurate one. The joystick is optional.
 <br/>Both joysticks are dependent on jQuery's UI Draggable function and and rely on Dave Furfero's [Touch Punch](http://touchpunch.furf.com/) to enable the draggable function on mobile devices. (included in the file). <br/><br/>
 **Efficient joystick**  `calculateHour();` <br/>
@@ -60,9 +62,6 @@ The main goal of this open-source project is to advance the use of interdevice c
 ##  Credits
 **Created by:** Wietse de Vries | [wietsedevries.eu](http://wietsedevries.eu) <br/>
 **Inspired by:** Eric Terpstra's "Anagrammatix" | [Github Repository](https://github.com/ericterpstra/anagrammatix)
-##### Contributors
-- Tijmen Helder | [@Github](https://github.com/TijmenH)
-- Tim Bartels | [@Github](https://github.com/timbartels)
 
 ##  License
 The MIT License (MIT)
